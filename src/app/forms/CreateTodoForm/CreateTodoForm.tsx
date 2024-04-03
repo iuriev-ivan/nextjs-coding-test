@@ -14,6 +14,9 @@ export const CreateTodoForm = () => {
       toast.success('Todo created successfully');
     }
   }
+  // TODO validation was not required,
+  //  but I add it just by using require attribute,
+  //  we can replace it with some library like zod, yup, etc.
 
   return (
     <form action={handleCreateTodo} className={styles.CreateTodoForm}>

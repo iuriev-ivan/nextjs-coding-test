@@ -16,6 +16,8 @@
   font-size: 1rem;
 }
 
+/*TODO all colors should be moved to constant and reused*/
+
 .TodoListItem {
   display: flex;
   height: 4.3rem;

@@ -12,6 +12,8 @@ export const getAllTodos = async () => {
 };
 
 export const deleteTodo = async (formData: FormData) => {
+  // TODO we can add validation using zod or yup if it`s required
+
   const { id } = Object.fromEntries(formData);
 
   if (id) {
@@ -31,6 +33,7 @@ export const deleteTodo = async (formData: FormData) => {
 };
 
 export const createTodo = async (formData: FormData) => {
+  // TODO we can add validation using zod or yup if it`s required
   const { title } = Object.fromEntries(formData);
 
   const response = await fetch(API_URL, {
@@ -50,4 +53,29 @@ export const createTodo = async (formData: FormData) => {
       error: 'Couldn`t create todo.',
     };
   }
+};
+
+export const getTodoById = async (id: string) => {
+  try {
+    const res = await fetch(`${API_URL}/${id}`);
+    return res.json();
+  } catch (error) {
+    return null;
+  }
+};
+
+export const updateTodo = async (formData: FormData) => {
+  // TODO I can add validation using zod or yup if it`s required
+
+  const { title, id } = Object.fromEntries(formData);
+
+  await fetch(`${API_URL}/${id}`, {
+    method: 'PATCH',
+    body: JSON.stringify({
+      title,
+    }),
+  });
+  // TODO I can also implement toast notifications for updateTodo if required
+  revalidatePath(todosPath);
+  redirect(todosPath);
 };

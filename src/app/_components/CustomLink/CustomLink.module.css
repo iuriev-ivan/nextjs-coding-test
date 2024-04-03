@@ -1,3 +1,5 @@
+/*TODO all colors should be moved to constant and reused*/
+
 .CustomLink {
   display: flex;
   width: fit-content;

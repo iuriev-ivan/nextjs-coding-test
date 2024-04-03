@@ -1,6 +1,10 @@
+/*TODO all colors should be moved to constant and reused*/
+
 .CustomButton {
   display: flex;
   width: fit-content;
+  align-items: center;
+  height: 2.5rem;
   padding: 0.5rem 1rem;
   font-size: 1rem;
   font-weight: 700;
