@@ -6,14 +6,16 @@ import { todosPath } from '@/app/config/path.config';
 import { API_URL } from '@/app/config/api.config';
 
 export const getAllTodos = async () => {
-  const res = await fetch(`${API_URL}?_limit=10`);
-
-  return res.json();
+  try {
+    const res = await fetch(`${API_URL}?_limit=10`);
+    return res.json();
+  } catch (error) {
+    return [];
+  }
 };
 
 export const deleteTodo = async (formData: FormData) => {
   // TODO we can add validation using zod or yup if it`s required
-
   const { id } = Object.fromEntries(formData);
 
   if (id) {
@@ -36,22 +38,24 @@ export const createTodo = async (formData: FormData) => {
   // TODO we can add validation using zod or yup if it`s required
   const { title } = Object.fromEntries(formData);
 
-  const response = await fetch(API_URL, {
-    method: 'POST',
-    body: JSON.stringify({
-      title,
-    }),
-  });
+  if (title) {
+    const response = await fetch(API_URL, {
+      method: 'POST',
+      body: JSON.stringify({
+        title,
+      }),
+    });
 
-  const data = await response.json();
+    const data = await response.json();
 
-  if (data.id) {
-    revalidatePath(todosPath);
-    redirect('/todos');
-  } else {
-    return {
-      error: 'Couldn`t create todo.',
-    };
+    if (data.id) {
+      revalidatePath(todosPath);
+      redirect('/todos');
+    } else {
+      return {
+        error: 'Couldn`t create todo.',
+      };
+    }
   }
 };
 
@@ -66,16 +70,17 @@ export const getTodoById = async (id: string) => {
 
 export const updateTodo = async (formData: FormData) => {
   // TODO I can add validation using zod or yup if it`s required
-
   const { title, id } = Object.fromEntries(formData);
 
-  await fetch(`${API_URL}/${id}`, {
-    method: 'PATCH',
-    body: JSON.stringify({
-      title,
-    }),
-  });
-  // TODO I can also implement toast notifications for updateTodo if required
-  revalidatePath(todosPath);
-  redirect(todosPath);
+  if (title && id) {
+    await fetch(`${API_URL}/${id}`, {
+      method: 'PATCH',
+      body: JSON.stringify({
+        title,
+      }),
+    });
+    // TODO I can also implement toast notifications for updateTodo if required
+    revalidatePath(todosPath);
+    redirect(todosPath);
+  }
 };
