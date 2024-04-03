@@ -1,0 +1,33 @@
+.TodoList {
+  display: flex;
+  flex-direction: column;
+  padding-top: 1rem;
+}
+
+.EmptyTodoList {
+  display: flex;
+  padding: 2rem;
+  justify-content: center;
+  align-content: center;
+}
+
+.TodoTitle {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.TodoListItem {
+  display: flex;
+  height: 4.3rem;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 0;
+  border-bottom: 0.1rem solid rgb(42, 42, 42);
+}
+
+.TodoListItem:last-child {
+  border-bottom: none;
+}
+
+
+
