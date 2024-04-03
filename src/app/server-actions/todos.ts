@@ -6,25 +6,48 @@ import { todosPath } from '@/app/config/path.config';
 import { API_URL } from '@/app/config/api.config';
 
 export const getAllTodos = async () => {
-  try {
-    const res = await fetch(`${API_URL}?_limit=10`);
+  const res = await fetch(`${API_URL}?_limit=10`);
 
-    return res.json();
-  } catch (error) {
-    return null;
-  }
+  return res.json();
 };
 
 export const deleteTodo = async (formData: FormData) => {
-  console.log('deleteTodo');
   const { id } = Object.fromEntries(formData);
 
   if (id) {
-    await fetch(`${API_URL}/${id}`, {
+    const response = await fetch(`${API_URL}/${id}`, {
       method: 'DELETE',
     });
 
+    if (response.status === 200) {
+      revalidatePath(todosPath);
+      redirect('/todos');
+    } else {
+      return {
+        error: 'Couldn`t delete todo.',
+      };
+    }
+  }
+};
+
+export const createTodo = async (formData: FormData) => {
+  const { title } = Object.fromEntries(formData);
+
+  const response = await fetch(API_URL, {
+    method: 'POST',
+    body: JSON.stringify({
+      title,
+    }),
+  });
+
+  const data = await response.json();
+
+  if (data.id) {
     revalidatePath(todosPath);
     redirect('/todos');
+  } else {
+    return {
+      error: 'Couldn`t create todo.',
+    };
   }
 };

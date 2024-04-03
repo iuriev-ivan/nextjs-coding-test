@@ -1,4 +1,4 @@
-'use server';
+'use client';
 
 import styles from './CustomButton.module.css';
 import cn from 'classnames';
