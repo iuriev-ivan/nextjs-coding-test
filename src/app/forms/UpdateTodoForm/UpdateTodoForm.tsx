@@ -4,12 +4,12 @@ import styles from './UpdateTodoForm.module.css';
 import { deleteTodo, updateTodo } from '@/app/server-actions/todos';
 import { CustomButton } from '@/app/_components/CustomButton/CustomButton';
 
-type UpdateFormProps = {
+type UpdateTodoFormProps = {
   title: string;
   id: string;
 };
 
-export const UpdateTodoForm = (props: UpdateFormProps) => {
+export const UpdateTodoForm = (props: UpdateTodoFormProps) => {
   const { id, title } = props;
 
   // TODO 1.Input element also can be moved to component UI kit and reused

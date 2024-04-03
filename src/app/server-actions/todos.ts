@@ -70,6 +70,8 @@ export const getTodoById = async (id: string) => {
 
 export const updateTodo = async (formData: FormData) => {
   // TODO I can add validation using zod or yup if it`s required
+  // TODO I can also implement toast notifications for updateTodo if required
+
   const { title, id } = Object.fromEntries(formData);
 
   if (title && id) {
@@ -79,7 +81,6 @@ export const updateTodo = async (formData: FormData) => {
         title,
       }),
     });
-    // TODO I can also implement toast notifications for updateTodo if required
     revalidatePath(todosPath);
     redirect(todosPath);
   }
