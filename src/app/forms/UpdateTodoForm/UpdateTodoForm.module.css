@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  max-width: 22rem;
+  max-width: 24rem;
 }
 
 .UpdateTodoFormLabel {
@@ -11,7 +11,7 @@
 }
 
 .UpdateTodoFormLabelInput {
-  height: 2rem;
+  height: 2.625rem;
   padding: 0.5rem;
   color: rgb(250, 250, 250);
   background: none;

@@ -1,7 +1,7 @@
 .TodoList {
   display: flex;
   flex-direction: column;
-  padding-top: 1rem;
+  padding-top: 1.5rem;
 }
 
 .EmptyTodoList {
@@ -20,7 +20,7 @@
 
 .TodoListItem {
   display: flex;
-  height: 4.3rem;
+  height: 4.375rem;
   justify-content: space-between;
   align-items: center;
   padding: 0.75rem 0;

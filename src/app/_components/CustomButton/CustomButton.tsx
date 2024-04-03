@@ -2,6 +2,7 @@
 
 import styles from './CustomButton.module.css';
 import cn from 'classnames';
+
 export type CustomButtonProps = {
   text: string;
   type: 'button' | 'submit';

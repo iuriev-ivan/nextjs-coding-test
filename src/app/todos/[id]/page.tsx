@@ -14,7 +14,7 @@ export default async function UpdateTodo({ params: { id } }: UpdateTodoProps) {
   // TODO we can also add toasts for this page if required
   return (
     <main>
-      <h1>Edit todo</h1>
+      <h2>Edit todo</h2>
       <UpdateTodoForm id={id} title={title} />
     </main>
   );

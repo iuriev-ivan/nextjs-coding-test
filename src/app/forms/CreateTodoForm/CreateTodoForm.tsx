@@ -11,10 +11,11 @@ export const CreateTodoForm = () => {
     if (response?.error) {
       toast.error(response?.error);
     } else {
+      // I add toasts here to show user that his action was handle
       toast.success('Todo created successfully');
     }
   }
-  // TODO validation was not required,
+  // Validation was not required,
   //  but I add it just by using require attribute,
   //  we can replace it with some library like zod, yup, etc.
 

@@ -1,7 +1,7 @@
 'use client';
 
 import styles from './DeleteTodoForm.module.css';
-import { deleteTodo } from '@/app/server-actions/todos';
+import { deleteTodoById } from '@/app/server-actions/todos';
 import { CustomButton } from '@/app/_components/CustomButton/CustomButton';
 import toast from 'react-hot-toast';
 
@@ -16,13 +16,15 @@ export const DeleteTodoForm = (props: DeleteTodoFormProps) => {
   // but I think it will usefull to understand that user action finished successfully or not
 
   async function handleDeleteTodo(formData: FormData) {
-    const response = await deleteTodo(formData);
+    const response = await deleteTodoById(formData);
     if (response?.error) {
       toast.error(response?.error);
     } else {
       toast.success('Todo deleted successfully');
     }
   }
+
+  // It's nice to have some confirmation popup for delete action
 
   return (
     <form action={handleDeleteTodo} className={styles.DeleteTodoForm}>

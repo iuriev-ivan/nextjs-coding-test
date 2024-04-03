@@ -1,7 +1,7 @@
 'use server';
 
 import styles from './UpdateTodoForm.module.css';
-import { deleteTodo, updateTodo } from '@/app/server-actions/todos';
+import { deleteTodoById, updateTodo } from '@/app/server-actions/todos';
 import { CustomButton } from '@/app/_components/CustomButton/CustomButton';
 
 type UpdateTodoFormProps = {
@@ -30,7 +30,7 @@ export const UpdateTodoForm = (props: UpdateTodoFormProps) => {
       <input type="hidden" name="id" value={id} required />
       <div className={styles.UpdateTodoFormActions}>
         <CustomButton text="Save" type="submit" />
-        <CustomButton text="Delete" isTransparent formAction={deleteTodo} type="submit" />
+        <CustomButton text="Delete" isTransparent formAction={deleteTodoById} type="submit" />
       </div>
     </form>
   );

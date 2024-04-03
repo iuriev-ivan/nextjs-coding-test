@@ -14,7 +14,7 @@ export const getAllTodos = async () => {
   }
 };
 
-export const deleteTodo = async (formData: FormData) => {
+export const deleteTodoById = async (formData: FormData) => {
   // TODO we can add validation using zod or yup if it`s required
   const { id } = Object.fromEntries(formData);
 
@@ -25,10 +25,11 @@ export const deleteTodo = async (formData: FormData) => {
 
     if (response.status === 200) {
       revalidatePath(todosPath);
-      redirect('/todos');
+      redirect(todosPath);
     } else {
+      // we are return error message to show notification toast
       return {
-        error: 'Couldn`t delete todo.',
+        error: `Couldn't delete todo.`,
       };
     }
   }
@@ -50,10 +51,12 @@ export const createTodo = async (formData: FormData) => {
 
     if (data.id) {
       revalidatePath(todosPath);
-      redirect('/todos');
+      redirect(todosPath);
     } else {
+      // we are return error message to show notification toast
+
       return {
-        error: 'Couldn`t create todo.',
+        error: `Couldn't create todo.`,
       };
     }
   }

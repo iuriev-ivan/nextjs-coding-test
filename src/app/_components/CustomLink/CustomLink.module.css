@@ -13,4 +13,5 @@
   cursor: pointer;
   text-transform: uppercase;
   text-decoration: none;
+  letter-spacing: 0.05rem;
 }
